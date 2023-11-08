@@ -1,8 +1,4 @@
-package dialogue;
-
-import java.util.Random;
-
-import jeu.Avion;
+package jeu;
 
 public class Jeu {
 	

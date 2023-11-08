@@ -8,8 +8,16 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import javax.swing.SwingConstants;
+
+import dialogue.DialogueJeu;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFrameGuessThePlane extends JFrame {
+	private DialogueJeu dialoguejeu;
 	private JPanel Reponse;
 	private JPanel EnTete;
 	private JPanel Indices;
@@ -20,18 +28,27 @@ public class JFrameGuessThePlane extends JFrame {
 	private JLabel IndicePays;
 	private JLabel Type;
 	private JLabel Variante;
+	private JPanel panelSchema;
+	private JPanel panelPhoto;
+	private JPanel panelPays;
+	private JTextField InputSurnom;
+	private JLabel Surnom;
+	private JButton BoutonValider;
 	public JFrameGuessThePlane() {
 		setTitle("GuessThePlane");
 		
 		Reponse = new JPanel();
 		getContentPane().add(Reponse, BorderLayout.SOUTH);
-		Reponse.setLayout(new GridLayout(0, 2, 0, 0));
+		Reponse.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		Type = new JLabel("Type/Constructeur");
 		Reponse.add(Type);
 		
 		Variante = new JLabel("Variante");
 		Reponse.add(Variante);
+		
+		Surnom = new JLabel("Surnom");
+		Reponse.add(Surnom);
 		
 		InputType = new JTextField();
 		Type.setLabelFor(InputType);
@@ -43,6 +60,18 @@ public class JFrameGuessThePlane extends JFrame {
 		Reponse.add(InputVariante);
 		InputVariante.setColumns(10);
 		
+		InputSurnom = new JTextField();
+		Reponse.add(InputSurnom);
+		InputSurnom.setColumns(10);
+		
+		BoutonValider = new JButton("Valider");
+		BoutonValider.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_BoutonValider_actionPerformed(e);
+			}
+		});
+		Reponse.add(BoutonValider);
+		
 		EnTete = new JPanel();
 		getContentPane().add(EnTete, BorderLayout.NORTH);
 		
@@ -50,17 +79,41 @@ public class JFrameGuessThePlane extends JFrame {
 		getContentPane().add(Indices, BorderLayout.CENTER);
 		Indices.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		IndicePays = new JLabel("");
-		IndicePays.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Flag_of_France_(1794–1815,_1830–1974).svg.png")));
-		Indices.add(IndicePays);
+		panelSchema = new JPanel();
+		Indices.add(panelSchema);
 		
-		IndicePhoto = new JLabel("");
-		IndicePhoto.setFont(new Font("Tahoma", Font.PLAIN, 5));
-		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Mirage2000.jpg")));
-		IndicePhoto.setBounds(10,10,400,400);
-		Indices.add(IndicePhoto);
 		
 		IndiceSchema = new JLabel("");
-		Indices.add(IndiceSchema);
+		panelSchema.add(IndiceSchema);
+		
+		panelPhoto = new JPanel();
+		Indices.add(panelPhoto);
+		
+		IndicePhoto = new JLabel("");
+		IndicePhoto.setLabelFor(panelPhoto);
+		panelPhoto.add(IndicePhoto);
+		IndicePhoto.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Mirage2000.jpg")));
+		
+		panelPays = new JPanel();
+		Indices.add(panelPays);
+		
+		IndicePays = new JLabel("");
+		IndicePays.setHorizontalAlignment(SwingConstants.CENTER);
+		panelPays.add(IndicePays);
+		IndicePays.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Flag_of_France_(1794–1815,_1830–1974).svg.png")));
+	}
+	
+	public void initPresentation() {
+		//TODO faire le initPresentation 
+	}
+	public void setDialogue(DialogueJeu dialoguejeu) {
+		this.dialoguejeu=dialoguejeu;
+	}
+	
+	protected void do_BoutonValider_actionPerformed(ActionEvent e) {
+		System.out.println("ton pere le pute");
+		IndicePhoto.setVisible(false);;
+		BoutonValider.setName("fe");
 	}
 }

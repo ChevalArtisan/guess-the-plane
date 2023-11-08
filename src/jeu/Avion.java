@@ -1,19 +1,19 @@
 package jeu;
 
-import java.awt.Image;
 import java.util.Collection;
 
 public class Avion {
 	private Collection<String> type;
 	private Collection<String> variante;
+	private Collection<String> surnom;
 	private Pays pays;
 	private String[] indices;
 	
 	
-	public Avion(Collection<String> type, Collection<String> variante, Pays pays, String[] indices) {
-		super();
+	public Avion(Collection<String> type, Collection<String> variante,Collection<String> surnom, Pays pays, String[] indices) {
 		this.type = type;
 		this.variante = variante;
+		this.surnom=surnom;
 		this.pays = pays;
 		this.indices = indices;
 	}
@@ -29,7 +29,15 @@ public class Avion {
 	}
 	public void setVariante(Collection<String> variante) {
 		this.variante = variante;
+	} 
+	public Collection<String> getSurnom() {
+		return surnom;
 	}
+
+	public void setSurnom(Collection<String> surnom) {
+		this.surnom = surnom;
+	}
+
 	public Pays getPays() {
 		return pays;
 	}
