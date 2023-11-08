@@ -14,7 +14,9 @@ public class Jeu {
 	}
 	
 	
-	public boolean isReponseJuste(String reponseType,String reponseVariante) {
-		return avionEnCours.getType().contains(reponseType.toLowerCase())&&avionEnCours.getVariante().contains(reponseVariante.toLowerCase());
+	public boolean isReponseJuste(String reponseType,String reponseVariante,String reponseSurnom) {
+		return avionEnCours.getType().contains(reponseType.toLowerCase())
+				&&avionEnCours.getVariante().contains(reponseVariante.toLowerCase())
+				&&avionEnCours.getSurnom().contains(reponseSurnom.toLowerCase());
 	}
 }

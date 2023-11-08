@@ -34,6 +34,7 @@ public class JFrameGuessThePlane extends JFrame {
 	private JTextField InputSurnom;
 	private JLabel Surnom;
 	private JButton BoutonValider;
+	private JButton btnNewClue;
 	public JFrameGuessThePlane() {
 		setTitle("GuessThePlane");
 		
@@ -75,6 +76,9 @@ public class JFrameGuessThePlane extends JFrame {
 		EnTete = new JPanel();
 		getContentPane().add(EnTete, BorderLayout.NORTH);
 		
+		btnNewClue = new JButton("Nouvel indice");
+		EnTete.add(btnNewClue);
+		
 		Indices = new JPanel();
 		getContentPane().add(Indices, BorderLayout.CENTER);
 		Indices.setLayout(new GridLayout(1, 0, 0, 0));
@@ -112,8 +116,9 @@ public class JFrameGuessThePlane extends JFrame {
 	}
 	
 	protected void do_BoutonValider_actionPerformed(ActionEvent e) {
-		System.out.println("ton pere le pute");
-		IndicePhoto.setVisible(false);;
-		BoutonValider.setName("fe");
+		String repType = InputType.getText();
+		String repVar = InputVariante.getText();
+		String repSurnom = InputSurnom.getText();
+		dialoguejeu.handle_reponse(repType,repVar,repSurnom);
 	}
 }
