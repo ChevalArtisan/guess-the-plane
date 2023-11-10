@@ -2,6 +2,9 @@ package dialogue;
 
 import java.awt.EventQueue;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import affichage.JFrameGuessThePlane;
 import jeu.Jeu;
 
@@ -26,6 +29,7 @@ private Jeu jeu;
 	public void handle_reponse(String reponseType,String reponseVariante,String reponseSurnom) {
 		//TODO dialogue reponse
 	}
+
 public static void main(String[] args) {
 		
 		//Create dialogReservation

@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -15,6 +16,8 @@ import dialogue.DialogueJeu;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class JFrameGuessThePlane extends JFrame {
 	private DialogueJeu dialoguejeu;
@@ -35,6 +38,7 @@ public class JFrameGuessThePlane extends JFrame {
 	private JLabel Surnom;
 	private JButton BoutonValider;
 	private JButton btnNewClue;
+	private int numindice=0;
 	public JFrameGuessThePlane() {
 		setTitle("GuessThePlane");
 		
@@ -77,6 +81,11 @@ public class JFrameGuessThePlane extends JFrame {
 		getContentPane().add(EnTete, BorderLayout.NORTH);
 		
 		btnNewClue = new JButton("Nouvel indice");
+		btnNewClue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_btnNewClue_actionPerformed(e);
+			}
+		});
 		EnTete.add(btnNewClue);
 		
 		Indices = new JPanel();
@@ -88,6 +97,7 @@ public class JFrameGuessThePlane extends JFrame {
 		
 		
 		IndiceSchema = new JLabel("");
+		IndiceSchema.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Dassault_Mirage_2000C_3-view_line_drawing.gif")));
 		panelSchema.add(IndiceSchema);
 		
 		panelPhoto = new JPanel();
@@ -109,7 +119,9 @@ public class JFrameGuessThePlane extends JFrame {
 	}
 	
 	public void initPresentation() {
-		//TODO faire le initPresentation 
+		IndicePhoto.setVisible(true);
+		IndicePays.setVisible(false);
+		IndiceSchema.setVisible(false);
 	}
 	public void setDialogue(DialogueJeu dialoguejeu) {
 		this.dialoguejeu=dialoguejeu;
@@ -121,4 +133,23 @@ public class JFrameGuessThePlane extends JFrame {
 		String repSurnom = InputSurnom.getText();
 		dialoguejeu.handle_reponse(repType,repVar,repSurnom);
 	}
+	protected void do_btnNewClue_actionPerformed(ActionEvent e) {
+		switch (numindice) {
+		case 0: {
+			IndicePays.setVisible(true);
+			break;
+			
+		}
+		case 1:{
+			IndiceSchema.setVisible(true);
+			btnNewClue.setEnabled(false);
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: "+numindice);
+			
+		}
+		numindice++;
+	}
+	
 }
