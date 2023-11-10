@@ -138,7 +138,6 @@ public class JFrameGuessThePlane extends JFrame {
 		case 0: {
 			IndicePays.setVisible(true);
 			break;
-			
 		}
 		case 1:{
 			IndiceSchema.setVisible(true);
@@ -147,7 +146,6 @@ public class JFrameGuessThePlane extends JFrame {
 		}
 		default:
 			throw new IllegalArgumentException("Unexpected value: "+numindice);
-			
 		}
 		numindice++;
 	}
