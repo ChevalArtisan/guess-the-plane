@@ -12,12 +12,12 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import dialogue.DialogueJeu;
+import jeu.Jeu;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 
 public class JFrameGuessThePlane extends JFrame {
 	private DialogueJeu dialoguejeu;
@@ -97,17 +97,16 @@ public class JFrameGuessThePlane extends JFrame {
 		
 		
 		IndiceSchema = new JLabel("");
-		IndiceSchema.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Dassault_Mirage_2000C_3-view_line_drawing.gif")));
 		panelSchema.add(IndiceSchema);
 		
 		panelPhoto = new JPanel();
 		Indices.add(panelPhoto);
 		
 		IndicePhoto = new JLabel("");
+		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Dassault_Mirage_2000C_3-view_line_drawing.gif")));
 		IndicePhoto.setLabelFor(panelPhoto);
 		panelPhoto.add(IndicePhoto);
 		IndicePhoto.setFont(new Font("Tahoma", Font.PLAIN, 5));
-		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Mirage2000.jpg")));
 		
 		panelPays = new JPanel();
 		Indices.add(panelPays);
@@ -115,24 +114,45 @@ public class JFrameGuessThePlane extends JFrame {
 		IndicePays = new JLabel("");
 		IndicePays.setHorizontalAlignment(SwingConstants.CENTER);
 		panelPays.add(IndicePays);
-		IndicePays.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Flag_of_France_(1794–1815,_1830–1974).svg.png")));
 	}
 	
 	public void initPresentation() {
-		IndicePhoto.setVisible(true);
-		IndicePays.setVisible(false);
-		IndiceSchema.setVisible(false);
+		newPlane();
+		
+		
 	}
 	public void setDialogue(DialogueJeu dialoguejeu) {
 		this.dialoguejeu=dialoguejeu;
+	}
+	
+	public void newPlane() {
+		String[] indices=dialoguejeu.handleNewPlane().getIndices();
+		numindice=0;
+		btnNewClue.setEnabled(true);
+		IndicePhoto.setVisible(true);
+		IndicePays.setVisible(false);
+		IndiceSchema.setVisible(false);
+		System.out.println(indices[0]);
+		System.out.println(indices[1]);
+		System.out.println(indices[2]);
+		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[0])));
+		IndicePays.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[1])));
+		IndiceSchema.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[2])));
+		
 	}
 	
 	protected void do_BoutonValider_actionPerformed(ActionEvent e) {
 		String repType = InputType.getText();
 		String repVar = InputVariante.getText();
 		String repSurnom = InputSurnom.getText();
-		dialoguejeu.handle_reponse(repType,repVar,repSurnom);
+		if (dialoguejeu.handleReponse(repType,repVar,repSurnom)) {
+			JOptionPane.showMessageDialog(this, "Bonne reponse");
+		} else {
+			JOptionPane.showMessageDialog(this, "Mauvaise reponse");
+		}
+		newPlane();
 	}
+	
 	protected void do_btnNewClue_actionPerformed(ActionEvent e) {
 		switch (numindice) {
 		case 0: {
