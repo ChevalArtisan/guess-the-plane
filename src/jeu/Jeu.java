@@ -10,9 +10,9 @@ public class Jeu {
 
 		String[] typeMirage2000={"mirage"};
 		String[] varianteMirage2000={"2000"};
-		String[] surnomMirage2000= {""};
+		String[] pasDeSurnom= {""};
 		String[] indicesM2000= {"Mirage2000.jpg","Flag_of_France.svg.png","Dassault_Mirage_2000C_3-view_line_drawing.gif"};
-		Avion mirage2000 = new Avion(typeMirage2000,varianteMirage2000,surnomMirage2000,Pays.FRANCE,indicesM2000);
+		Avion mirage2000 = new Avion(typeMirage2000,varianteMirage2000,pasDeSurnom,Pays.FRANCE,indicesM2000);
 		
 		String[] typeF16={"f"};
 		String[] varianteF16={"16"};
@@ -20,14 +20,24 @@ public class Jeu {
 		String[] indicesF16= {"f16.jpeg","Flag_of_the_United_States.svg.png","F-16-view_line_drawing.svg"};
 		Avion f16 = new Avion(typeF16,varianteF16,surnomF16,Pays.ETATSUNIS,indicesF16);
 		
+		String[] typeSU= {"soukhoi","soukhoï","su","sukhoi"};
+		String[] varianteSU57= {"57"};
+		String[] surnomSU57= {"felon"};
+		String[] indicesSU57= {"su57.jpg","Flag_of_Russia.svg.png","Sukhoi_PAK-FA_isometric.svg.png"};
+		Avion su57=new Avion(typeSU,varianteSU57,surnomSU57,Pays.URSS,indicesSU57);
 		
-		Avion[] avions= {mirage2000,f16};
+		
+		String[] typeRafale= {"rafale"};
+		String[] varianteRafale= {"m"};
+		String[] indicesRafale= {"rafale.jpg","Flag_of_France.svg.png","Dassault_Rafale_3-view_line_drawing.svg.png"};
+		Avion rafale=new Avion(typeRafale, varianteRafale, pasDeSurnom, Pays.FRANCE, indicesRafale);
+		
+		Avion[] avions= {mirage2000,f16,su57,rafale};
 		this.avions=avions;
 	}
 	
 	public void newAvion() {
 		avionEnCours=avions[cpt++];
-		System.out.println(avionEnCours.getType());
 	}
 	
 	
