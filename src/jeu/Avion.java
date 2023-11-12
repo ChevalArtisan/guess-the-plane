@@ -1,5 +1,7 @@
 package jeu;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class Avion {
@@ -10,10 +12,10 @@ public class Avion {
 	private String[] indices;
 	
 	
-	public Avion(Collection<String> type, Collection<String> variante,Collection<String> surnom, Pays pays, String[] indices) {
-		this.type = type;
-		this.variante = variante;
-		this.surnom=surnom;
+	public Avion(String[] type, String[]  variante,String[]  surnom, Pays pays, String[] indices) {
+		this.type = Arrays.asList(type);
+		this.variante = Arrays.asList(variante);
+		this.surnom=Arrays.asList(surnom);
 		this.pays = pays;
 		this.indices = indices;
 	}

@@ -39,6 +39,8 @@ public class JFrameGuessThePlane extends JFrame {
 	private JButton BoutonValider;
 	private JButton btnNewClue;
 	private int numindice=0;
+	private int pts=0;
+	private JLabel Score;
 	public JFrameGuessThePlane() {
 		setTitle("GuessThePlane");
 		
@@ -68,6 +70,10 @@ public class JFrameGuessThePlane extends JFrame {
 		InputSurnom = new JTextField();
 		Reponse.add(InputSurnom);
 		InputSurnom.setColumns(10);
+		
+		Score = new JLabel("0pts");
+		Score.setHorizontalAlignment(SwingConstants.CENTER);
+		Reponse.add(Score);
 		
 		BoutonValider = new JButton("Valider");
 		BoutonValider.addActionListener(new ActionListener() {
@@ -132,21 +138,25 @@ public class JFrameGuessThePlane extends JFrame {
 		IndicePhoto.setVisible(true);
 		IndicePays.setVisible(false);
 		IndiceSchema.setVisible(false);
-		System.out.println(indices[0]);
-		System.out.println(indices[1]);
-		System.out.println(indices[2]);
 		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[0])));
 		IndicePays.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[1])));
 		IndiceSchema.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[2])));
+		Score.setText(pts+"pts");
+		InputType.setText("");
+		InputVariante.setText("");
+		InputSurnom.setText("");
 		
 	}
+	
 	
 	protected void do_BoutonValider_actionPerformed(ActionEvent e) {
 		String repType = InputType.getText();
 		String repVar = InputVariante.getText();
 		String repSurnom = InputSurnom.getText();
-		if (dialoguejeu.handleReponse(repType,repVar,repSurnom)) {
-			JOptionPane.showMessageDialog(this, "Bonne reponse");
+		int rep=dialoguejeu.handleReponse(repType,repVar,repSurnom);
+		if (rep!=0) {
+			JOptionPane.showMessageDialog(this, "Bonne reponse, vous marquez "+rep+"pts");
+			pts+=rep;
 		} else {
 			JOptionPane.showMessageDialog(this, "Mauvaise reponse");
 		}
