@@ -118,7 +118,7 @@ public class JFrameGuessThePlane extends JFrame {
 		IndicePhoto.setLabelFor(panelPhoto);
 		panelPhoto.add(IndicePhoto);
 		IndicePhoto.setFont(new Font("Tahoma", Font.PLAIN, 5));
-		IndicePhoto.setSize(panelPhoto.getSize());
+		IndicePhoto.setSize(100,100);
 		
 		panelPays = new JPanel();
 		Indices.add(panelPays);
@@ -158,9 +158,10 @@ public class JFrameGuessThePlane extends JFrame {
 	
 	
 	protected void do_BoutonValider_actionPerformed(ActionEvent e) {
-		String repType = InputType.getText();
-		String repVar = InputVariante.getText();
-		String repSurnom = InputSurnom.getText();
+		String repType = InputType.getText().toLowerCase();
+		String repVar = InputVariante.getText().toLowerCase();
+		String repSurnom = InputSurnom.getText().toLowerCase();
+		System.out.println(repType);
 		int rep=dialoguejeu.handleReponse(repType,repVar,repSurnom);
 		if (rep!=0) {
 			JOptionPane.showMessageDialog(this, "Bonne reponse, vous marquez "+rep+"pts");

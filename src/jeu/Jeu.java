@@ -47,11 +47,12 @@ public class Jeu {
 
 	public int isReponseJuste(String reponseType,String reponseVariante,String reponseSurnom) {
 		int result=0;
-				if(avionEnCours.getType().contains(reponseType.toLowerCase())&&avionEnCours.getVariante().contains(reponseVariante.toLowerCase())) {
+		System.out.println(reponseType.replaceAll("\\s",""));
+				if(avionEnCours.getType().contains(reponseType.replaceAll("\\s",""))&&avionEnCours.getVariante().contains(reponseVariante.replaceAll("\\s",""))) {
 					result++;
 					if (avionEnCours.getSurnom().contains("")) {
 						
-					}else if(avionEnCours.getSurnom().contains(reponseSurnom.toLowerCase())) {
+					}else if(avionEnCours.getSurnom().contains(reponseSurnom.replaceAll("\\s",""))) {
 						result++;
 					}
 				}
