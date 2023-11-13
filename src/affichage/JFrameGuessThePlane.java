@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -43,6 +45,8 @@ public class JFrameGuessThePlane extends JFrame {
 	private JLabel Score;
 	public JFrameGuessThePlane() {
 		setTitle("GuessThePlane");
+		setPreferredSize(new Dimension(900, 600));
+		setSize(getPreferredSize());
 		
 		Reponse = new JPanel();
 		getContentPane().add(Reponse, BorderLayout.SOUTH);
@@ -103,6 +107,7 @@ public class JFrameGuessThePlane extends JFrame {
 		
 		
 		IndiceSchema = new JLabel("");
+		IndiceSchema.setSize(panelSchema.getSize());
 		panelSchema.add(IndiceSchema);
 		
 		panelPhoto = new JPanel();
@@ -113,12 +118,15 @@ public class JFrameGuessThePlane extends JFrame {
 		IndicePhoto.setLabelFor(panelPhoto);
 		panelPhoto.add(IndicePhoto);
 		IndicePhoto.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		IndicePhoto.setSize(panelPhoto.getSize());
 		
 		panelPays = new JPanel();
 		Indices.add(panelPays);
 		
 		IndicePays = new JLabel("");
 		IndicePays.setHorizontalAlignment(SwingConstants.CENTER);
+		IndicePays.setSize(panelPays.getSize());
+		
 		panelPays.add(IndicePays);
 	}
 	
