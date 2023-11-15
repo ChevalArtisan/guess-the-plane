@@ -1,4 +1,9 @@
 package jeu;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Jeu {
 	
 	private Avion[] avions;
@@ -14,11 +19,11 @@ public class Jeu {
 		String[] indicesM2000= {"Mirage2000.jpg","Flag_of_France.svg.png","Dassault_Mirage_2000C_3-view_line_drawing.gif"};
 		Avion mirage2000 = new Avion(typeMirage2000,varianteMirage2000,pasDeSurnom,Pays.FRANCE,indicesM2000);
 		
-		String[] typeF16={"f"};
+		String[] typeF={"f"};
 		String[] varianteF16={"16"};
-		String[] surnomF16= {"fighting falcon"};
+		String[] surnomF16= {"fighting falcon","viper"};
 		String[] indicesF16= {"f16.jpeg","Flag_of_the_United_States.svg.png","F-16-view_line_drawing.svg"};
-		Avion f16 = new Avion(typeF16,varianteF16,surnomF16,Pays.ETATSUNIS,indicesF16);
+		Avion f16 = new Avion(typeF,varianteF16,surnomF16,Pays.ETATSUNIS,indicesF16);
 		
 		String[] typeSU= {"soukhoi","soukhoï","su","sukhoi"};
 		String[] varianteSU57= {"57"};
@@ -32,7 +37,13 @@ public class Jeu {
 		String[] indicesRafale= {"rafale.jpg","Flag_of_France.svg.png","Dassault_Rafale_3-view_line_drawing.svg.png"};
 		Avion rafale=new Avion(typeRafale, varianteRafale, pasDeSurnom, Pays.FRANCE, indicesRafale);
 		
-		Avion[] avions= {mirage2000,f16,su57,rafale};
+		String[] variante111= {"111"};
+		String[] surnomF111= {"aardvark"};
+		String[] indicesF111= {"f111.jpg","Flag_of_the_United_States.svg.png","General_Dynamics_F-111_Aardvark_3-view.svg"};
+		Avion f111=new Avion(typeF, variante111, surnomF111, Pays.ETATSUNIS, indicesF111);
+		
+		
+		Avion[] avions= {mirage2000,f16,su57,rafale,f111};
 		this.avions=avions;
 	}
 	
@@ -40,7 +51,14 @@ public class Jeu {
 		avionEnCours=avions[cpt++];
 	}
 	
-	
+	public void shuffle() {
+		List<Avion> avionsList = Arrays.asList(avions);
+		
+		Collections.shuffle(avionsList);
+		
+		avionsList.toArray(avions);
+
+	}
 	public Avion getAvionEnCours() {
 		return avionEnCours;
 	}

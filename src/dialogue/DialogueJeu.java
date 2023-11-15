@@ -47,7 +47,7 @@ public static void main(String[] args) {
 
 		
 		Jeu jeu = new Jeu();
-		
+		jeu.shuffle();
 		
 		DialogueJeu dialogueJeu = new DialogueJeu();
 		dialogueJeu.setJeu(jeu);

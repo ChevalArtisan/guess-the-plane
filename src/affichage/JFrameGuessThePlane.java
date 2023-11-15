@@ -118,7 +118,7 @@ public class JFrameGuessThePlane extends JFrame {
 		IndicePhoto.setLabelFor(panelPhoto);
 		panelPhoto.add(IndicePhoto);
 		IndicePhoto.setFont(new Font("Tahoma", Font.PLAIN, 5));
-		IndicePhoto.setSize(100,100);
+		IndicePhoto.setSize(10,20);
 		
 		panelPays = new JPanel();
 		Indices.add(panelPays);
