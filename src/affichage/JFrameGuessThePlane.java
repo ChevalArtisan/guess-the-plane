@@ -2,6 +2,9 @@ package affichage;
 
 import javax.swing.JFrame;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Label;
+
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -9,6 +12,7 @@ import java.awt.Dimension;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -18,6 +22,9 @@ import jeu.Jeu;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 
@@ -106,6 +113,7 @@ public class JFrameGuessThePlane extends JFrame {
 		Indices.add(panelSchema);
 		
 		
+		
 		IndiceSchema = new JLabel("");
 		IndiceSchema.setSize(panelSchema.getSize());
 		panelSchema.add(IndiceSchema);
@@ -114,11 +122,11 @@ public class JFrameGuessThePlane extends JFrame {
 		Indices.add(panelPhoto);
 		
 		IndicePhoto = new JLabel("");
+		panelPhoto.add(IndicePhoto);
 		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/Dassault_Mirage_2000C_3-view_line_drawing.gif")));
 		IndicePhoto.setLabelFor(panelPhoto);
-		panelPhoto.add(IndicePhoto);
 		IndicePhoto.setFont(new Font("Tahoma", Font.PLAIN, 5));
-		IndicePhoto.setSize(10,20);
+		IndicePhoto.setSize(300,200);
 		
 		panelPays = new JPanel();
 		Indices.add(panelPays);
@@ -139,6 +147,19 @@ public class JFrameGuessThePlane extends JFrame {
 		this.dialoguejeu=dialoguejeu;
 	}
 	
+//	public Image setImage(String path,JLabel lbl) {
+//		BufferedImage img = null;
+//		try {
+//		    img = ImageIO.read(new File(JFrameGuessThePlane.class.getResource(path)));
+//		} catch (IOException e) {
+//		    e.printStackTrace();
+//		}
+//		Image dimg = img.getScaledInstance(lbl.getWidth(), lbl.getHeight(),
+//		        Image.SCALE_SMOOTH);
+//		return dimg;
+//		
+//	}
+	
 	public void newPlane() {
 		String[] indices=dialoguejeu.handleNewPlane().getIndices();
 		numindice=0;
@@ -146,9 +167,31 @@ public class JFrameGuessThePlane extends JFrame {
 		IndicePhoto.setVisible(true);
 		IndicePays.setVisible(false);
 		IndiceSchema.setVisible(false);
-		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[0])));
-		IndicePays.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[1])));
-		IndiceSchema.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[2])));
+		System.out.println(IndicePhoto.getWidth());
+		System.out.println(IndicePhoto.getHeight());
+		System.out.println(panelPhoto.getWidth());
+		System.out.println(panelPhoto.getHeight());
+//		IndicePhoto.setIcon(new ImageIcon(setImage("/ressources"+indices[0], IndicePhoto)));
+//		IndicePays.setIcon(new ImageIcon(setImage("/ressources/"+indices[1], IndicePays)));
+//		IndiceSchema.setIcon(new ImageIcon(setImage("/ressources/"+indices[2], IndiceSchema)));
+		
+		IndicePhoto.setIcon(new ImageIcon(new ImageIcon(JFrameGuessThePlane.class.getResource(
+				"/ressources/"+indices[0])).getImage().getScaledInstance(
+				300, 200, Image.SCALE_SMOOTH)));
+		IndicePays.setIcon(new ImageIcon(new ImageIcon(JFrameGuessThePlane.class.getResource(
+				"/ressources/"+indices[1])).getImage().getScaledInstance(
+						300, 200, Image.SCALE_SMOOTH)));
+		IndiceSchema.setIcon(new ImageIcon(new ImageIcon(JFrameGuessThePlane.class.getResource(
+				"/ressources/"+indices[2])).getImage().getScaledInstance(
+						300, 200, Image.SCALE_SMOOTH)));
+		
+//		IndicePhoto.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[0])));
+//		IndicePays.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[1])));
+//		IndiceSchema.setIcon(new ImageIcon(JFrameGuessThePlane.class.getResource("/ressources/"+indices[2])));
+//		
+//		
+		
+		
 		Score.setText(pts+"pts");
 		InputType.setText("");
 		InputVariante.setText("");
