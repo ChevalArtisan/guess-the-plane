@@ -42,8 +42,32 @@ public class Jeu {
 		String[] indicesF111= {"f111.jpg","Flag_of_the_United_States.svg.png","General_Dynamics_F-111_Aardvark_3-view.svg"};
 		Avion f111=new Avion(typeF, variante111, surnomF111, Pays.ETATSUNIS, indicesF111);
 		
+		String[] typeYak= {"yak","yakovlev"};
+		String[] variante38= {"38"};
+		String[] surnomYak38= {"forger"};
+		String[] indicesYak38= {"yak38.jpg","Flag_of_the_Soviet_Union.svg.png","yak38schema.jpg"};
+		Avion yak38=new Avion(typeYak, variante38, surnomYak38, Pays.URSS, indicesYak38);
 		
-		Avion[] avions= {mirage2000,f16,su57,rafale,f111};
+		
+		String[] typeMig= {"mig","mikoyan-gourevitch","mikoyangourevitch"};
+		String[] variante29= {"29"};
+		String[] surnomMig29= {"fulcrum"};
+		String[] indicesMig29= {"mig29.jpg","Flag_of_the_Soviet_Union.svg.png","Mikoyan_MiG-29_3-view_line_drawing.png"};
+		Avion mig29 = new Avion(typeMig,variante29,surnomMig29,Pays.URSS,indicesMig29);
+		
+		String[] typeTupolev= {"tupolev","tu"};
+		String[] variante160= {"160"};
+		String[] surnomtu160= {"blackjack"};
+		String[] indicestu160= {"tu160.jpg","Flag_of_the_Soviet_Union.svg.png","Tupolev_Tu-160_3-view_graphic.svg.png"};
+		Avion tu160 = new Avion(typeTupolev, variante160, surnomtu160, Pays.URSS, indicestu160);
+		
+		String[] variante14= {"14"};
+		String[] surnomf14= {"tomcat","bombcat"};
+		String[] indicesF14= {"f14.jpg","Flag_of_the_United_States.svg.png","420px-Grumman_F-14_Tomcat.png"};
+		Avion f14=new Avion(typeF, variante14, surnomf14, Pays.ETATSUNIS, indicesF14);
+		
+		
+		Avion[] avions= {mirage2000,f14,f16,su57,rafale,f111,yak38,mig29,tu160} ;
 		this.avions=avions;
 	}
 	
