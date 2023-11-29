@@ -69,16 +69,31 @@ public class JFrameGuessThePlane extends JFrame {
 		Reponse.add(Surnom);
 		
 		InputType = new JTextField();
+		InputType.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_InputType_actionPerformed(e);
+			}
+		});
 		Type.setLabelFor(InputType);
 		Reponse.add(InputType);
 		InputType.setColumns(10);
 		
 		InputVariante = new JTextField();
+		InputVariante.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_InputVariante_actionPerformed(e);
+			}
+		});
 		Variante.setLabelFor(InputVariante);
 		Reponse.add(InputVariante);
 		InputVariante.setColumns(10);
 		
 		InputSurnom = new JTextField();
+		InputSurnom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_InputSurnom_actionPerformed(e);
+			}
+		});
 		Reponse.add(InputSurnom);
 		InputSurnom.setColumns(10);
 		
@@ -167,13 +182,7 @@ public class JFrameGuessThePlane extends JFrame {
 		IndicePhoto.setVisible(true);
 		IndicePays.setVisible(false);
 		IndiceSchema.setVisible(false);
-		System.out.println(IndicePhoto.getWidth());
-		System.out.println(IndicePhoto.getHeight());
-		System.out.println(panelPhoto.getWidth());
-		System.out.println(panelPhoto.getHeight());
-//		IndicePhoto.setIcon(new ImageIcon(setImage("/ressources"+indices[0], IndicePhoto)));
-//		IndicePays.setIcon(new ImageIcon(setImage("/ressources/"+indices[1], IndicePays)));
-//		IndiceSchema.setIcon(new ImageIcon(setImage("/ressources/"+indices[2], IndiceSchema)));
+		
 		
 		IndicePhoto.setIcon(new ImageIcon(new ImageIcon(JFrameGuessThePlane.class.getResource(
 				"/ressources/"+indices[0])).getImage().getScaledInstance(
@@ -199,8 +208,7 @@ public class JFrameGuessThePlane extends JFrame {
 		
 	}
 	
-	
-	protected void do_BoutonValider_actionPerformed(ActionEvent e) {
+	private void valider() {
 		String repType = InputType.getText().toLowerCase();
 		String repVar = InputVariante.getText().toLowerCase();
 		String repSurnom = InputSurnom.getText().toLowerCase();
@@ -213,6 +221,10 @@ public class JFrameGuessThePlane extends JFrame {
 			JOptionPane.showMessageDialog(this, "Mauvaise reponse");
 		}
 		newPlane();
+	}
+	
+	protected void do_BoutonValider_actionPerformed(ActionEvent e) {
+		valider();
 	}
 	
 	protected void do_btnNewClue_actionPerformed(ActionEvent e) {
@@ -232,4 +244,13 @@ public class JFrameGuessThePlane extends JFrame {
 		numindice++;
 	}
 	
+	protected void do_InputType_actionPerformed(ActionEvent e) {
+		valider();
+	}
+	protected void do_InputVariante_actionPerformed(ActionEvent e) {
+		valider();
+	}
+	protected void do_InputSurnom_actionPerformed(ActionEvent e) {
+		valider();
+	}
 }

@@ -66,8 +66,19 @@ public class Jeu {
 		String[] indicesF14= {"f14.jpg","Flag_of_the_United_States.svg.png","420px-Grumman_F-14_Tomcat.png"};
 		Avion f14=new Avion(typeF, variante14, surnomf14, Pays.ETATSUNIS, indicesF14);
 		
+		String[] typeTyphoon= {"eurofighter"};
+		String[] varianteTyphoon= {"typhoon"};
+		String[] indicesTyphoon= {"typhoon.jpg","Flag_of_Germany.svg.png","ef2000_1_3v.jpg"};
+		Avion typhoon=new Avion(typeTyphoon,varianteTyphoon,pasDeSurnom,Pays.ALLEMAGNE,indicesTyphoon);
 		
-		Avion[] avions= {mirage2000,f14,f16,su57,rafale,f111,yak38,mig29,tu160} ;
+		
+		String[] typeU= {"u"};
+		String[] variante2= {"2"};
+		String[] surnomU2= {"dragonlady"};
+		String[] indicesU2= {"u2.jpg","Flag_of_the_United_States.svg.png","458px-Lockheed_U-2_0014.jpg"};
+		Avion u2 = new Avion(typeU,variante2,surnomU2,Pays.ETATSUNIS,indicesU2);
+		
+		Avion[] avions= {mirage2000,f14,f16,su57,rafale,f111,yak38,mig29,tu160,typhoon,u2} ;
 		this.avions=avions;
 	}
 	
